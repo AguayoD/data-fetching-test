@@ -1,3 +1,5 @@
+export const fetchCache ="default-cache";
+
 type Product = {
     id: number;
     title: string;
@@ -6,8 +8,17 @@ type Product = {
 };
 
 export default async function ProductsPage(){
-    const response = await fetch("http://localhost:3001/products");
+   const response = await fetch("http://localhost:3001/products", {
+        cache: "no-store",
+    }); 
     const products = await response.json();
+
+    // const cookieStore = cookies();
+    // cookieStore.get("theme");
+
+    // const detailsResponse = await fetch ("http://localhost:3001/products ");
+    // const details = await detailsResponse.json
+   
     return (
         <ul className="space-y-4 p-4">
             {products.map((product : Product) => (
